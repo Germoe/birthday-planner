@@ -71,14 +71,14 @@ function CreateNewBirthday({ setIsCreate, setValidBirthdays }) {
   
     return (
       <Form submitText="Add Birthday" onSubmit={createBirthday} disabled={!isValid} submit={true}> 
-        <TextField id="firstname" label="firstname" variant="filled" fullWidth value={firstname} />
-        <TextField id="lastname" label="lastname" variant="filled" fullWidth value={lastname} />
-        <TextField id="birthdate" label="birthdate" type="date" fullWidth variant="filled" value={birthdate} />
-        <TextField id="birthyear" label="birthyear" variant="filled" fullWidth value={birthyear} />
-        <TextField id="address" label="address" variant="filled" fullWidth value={address} />
-        <TextField id="postal" label="postal" variant="filled" fullWidth value={postal} />
-        <TextField id="city" label="city" variant="filled" fullWidth value={city} />
-        <TextField id="country" label="country" variant="filled" fullWidth value={country} />
+        <TextField id="firstname" label="firstname" variant="filled" fullWidth onChange={(e) => setFirstname(e.target.value)} value={firstname} />
+        <TextField id="lastname" label="lastname" variant="filled" fullWidth onChange={(e) => setLastname(e.target.value)} value={lastname} />
+        <TextField id="birthdate" label="birthdate" type="date" fullWidth variant="filled" onChange={(e) => setBirthdate(e.target.value)} value={birthdate} />
+        <TextField id="birthyear" label="birthyear" variant="filled" fullWidth onChange={(e) => setBirthyear(e.target.value)} value={birthyear} />
+        <TextField id="address" label="address" variant="filled" fullWidth onChange={(e) => setAddress(e.target.value)} value={address} />
+        <TextField id="postal" label="postal" variant="filled" fullWidth onChange={(e) => setPostal(e.target.value)} value={postal} />
+        <TextField id="city" label="city" variant="filled" fullWidth onChange={(e) => setCity(e.target.value)} value={city} />
+        <TextField id="country" label="country" variant="filled" fullWidth onChange={(e) => setCountry(e.target.value)} value={country} />
       </Form>
     );
   }
