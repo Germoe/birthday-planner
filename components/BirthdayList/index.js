@@ -4,6 +4,7 @@ import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import { useContext, useState } from "react";
 import { auth, firestore, getUserRef, fromMillis } from "../../lib/firebase";
+import { getDate, getMonth } from "../../lib/utils";
 import AuthCheck from "../AuthCheck";
 import Loader from "../Loader";
 
@@ -68,8 +69,8 @@ function parseBirthdate(birthdate) {
     /*
     Parses Date and returns the month and day of month
     */
-    const month = birthdate.getMonth() + 1
-    const date = birthdate.getDate()
+    const month = getMonth(birthdate);
+    const date = getDate(birthdate);
     return { month, date }
 }
 
