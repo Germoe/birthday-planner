@@ -35,14 +35,13 @@ const notificationDummy = {
 
 function NotificationSettings({ defaultValues, notificationRef }) {
     // const { register, handleSubmit, reset, watch, formState } = useForm({ defaultValues, mode: 'onChange' });
-
     const [email, setEmail] = useState(defaultValues.email)
     const [notify, setNotify] = useState(defaultValues.notify)
     const [daysBefore, setDaysBefore] = useState(defaultValues.daysBefore)
 
     const handleCheckboxChange = (e) => {
-        setNotify(!notify)
-        updateNotification({...defaultValues, notify: !notify});
+        setNotify(e.target.checked);
+        updateNotification({...defaultValues, notify: e.target.checked});
     }
 
     const handleTextFieldChange = (e) => {
@@ -70,19 +69,20 @@ function NotificationSettings({ defaultValues, notificationRef }) {
     }
     return (
         <Form submit={false}>
-            <TextField id="email" label="E-Mail" fullWidth defaultValue={defaultValues.email} onBlur={() => updateNotification({ email })} inputProps={{ onChange: handleTextFieldChange}}  />
+            <TextField id="email" label="E-Mail" fullWidth defaultValue={defaultValues.email} onBlur={() => updateNotification({ email, notify, daysBefore })} inputProps={{ onChange: handleTextFieldChange}}  />
             <InputLabel shrink id="birthday-reminders">Receive Birthday Reminders</InputLabel>
             <FormControlLabel
+                id="notify"
                 value="start"
                 control={<Checkbox color="primary" checked={defaultValues.notify} onClick={handleCheckboxChange} />}
                 label="via E-Mail"
                 labelPlacement="start"
                 />
             <InputLabel shrink id="notifications">Notify Days Before</InputLabel>
-            <Grid container spacing={2} alignItems="center">
+            <Grid container spacing={2} alignItems="center" id="days-before">
                 <Grid item>
                 <IconButton disabled={!notify}>
-                    <Badge showZero={true} variant="dot" overlap="circular" color={!notify ? "" : "primary"}>
+                    <Badge showZero={true} variant="dot" overlap="circular" color={!notify ? "default" : "primary"}>
                         <EmailIcon />
                     </Badge>
                 </IconButton>

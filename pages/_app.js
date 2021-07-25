@@ -15,8 +15,6 @@ import { useUserData } from '../lib/hooks';
 
 function MyApp({ Component, pageProps }) {
   const { user, loading, error, emailNotification, loadNotifications } = useUserData();
-
-  console.log(emailNotification, loadNotifications)
   return (
     <>
         <UserContext.Provider value={{user, loading, error, emailNotification, loadNotifications}}>
