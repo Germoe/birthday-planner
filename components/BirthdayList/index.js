@@ -4,6 +4,7 @@ import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import { useContext, useState } from "react";
 import { auth, firestore, getUserRef, fromMillis } from "../../lib/firebase";
+import { getDate, getMonth, getMonthName } from "../../lib/utils";
 import AuthCheck from "../AuthCheck";
 import Loader from "../Loader";
 
@@ -68,20 +69,18 @@ function parseBirthdate(birthdate) {
     /*
     Parses Date and returns the month and day of month
     */
-    const month = birthdate.getMonth() + 1
-    const date = birthdate.getDate()
+    const month = getMonth(birthdate);
+    const date = getDate(birthdate);
     return { month, date }
 }
 
-const monthNames = [null, "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
 
 function Birthday(props) {
     /*
     Renders a single Birthday card
     */
     const { month, date } = parseBirthdate(props.birthdate.toDate())
+    const monthName = getMonthName(props.birthdate.toDate())
 
     let age;
 
@@ -100,7 +99,7 @@ function Birthday(props) {
             </ListItemIcon>
             <ListItemText
             primary={`${props.firstname} ${props.lastname}`}
-            secondary={`${monthNames[month]} ${date} | Turns ${age}`}
+            secondary={`${monthName} ${date} | Turns ${age}`}
             />
         </ListItem>
         <Divider  component="li" />

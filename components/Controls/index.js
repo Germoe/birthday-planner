@@ -13,6 +13,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import ErrorIcon from '@material-ui/icons/Error';
 import { useTheme, withStyles } from '@material-ui/core/styles';
 import Settings from "../Settings";
+import { getDate, getMonth } from "../../lib/utils";
 
 const ErrorBadge = withStyles((theme) => ({
     badge: {
@@ -183,9 +184,9 @@ export default function Controls(props) {
 
 function getCountDown(birthdate) {
     const today = new Date();
-    let next_date = new Date(`${today.getFullYear()}-${birthdate.getMonth() + 1}-${birthdate.getDate()}`);
+    let next_date = new Date(`${today.getFullYear()}-${getMonth(birthdate)}-${getDate(birthdate)}`);
     if (today > next_date) {
-        next_date = new Date(`${today.getFullYear() + 1}-${birthdate.getMonth() + 1}-${birthdate.getDate()}`);
+        next_date = new Date(`${today.getFullYear() + 1}-${getMonth(birthdate)}-${getDate(birthdate)}`);
     }
     const timeinmilisec = next_date.getTime() - today.getTime();
     return Math.floor(timeinmilisec / (1000 * 60 * 60 * 24));
