@@ -20,7 +20,7 @@ function Alert(props) {
 }
 
 export default function SignInPage(props) {
-    const [user] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     const router = useRouter(); // Router Initialization to prepare for imperative navigation if not logged in
     
     const classes = useStyles();
@@ -30,7 +30,7 @@ export default function SignInPage(props) {
         if (user) {
           router.push('/')
         }
-    }, [user])
+    }, [user, loading])
     
     return (
         <>

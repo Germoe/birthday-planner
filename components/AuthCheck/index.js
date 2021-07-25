@@ -8,7 +8,6 @@ export default function AuthCheck(props) {
     const { user, loading } = useContext(UserContext);
     const router = useRouter(); // Router Initialization to prepare for imperative navigation if not logged in
     
-    console.log({user, loading})
     useEffect(() => {
       if (!user & !loading) {
         router.push('/enter')
