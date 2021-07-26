@@ -98,11 +98,12 @@ exports.addMessage = functions.https.onRequest(async (req, res) => {
                 birthdays
             }
         } else {
-            return false
+            return {uid}
         }
     }
 
-    const notifications = await sendUserNotifications(userids[1])
+    const notificationPromises = userids.map((uid) => sendUserNotifications(uid))
+    const notifications = await Promise.all(notificationPromises)
     // Send back a message that we've successfully written the message
     return res.json({result: notifications});
   });
