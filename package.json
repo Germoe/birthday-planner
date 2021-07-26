@@ -26,5 +26,21 @@
   "devDependencies": {
     "eslint": "7.30.0",
     "eslint-config-next": "11.0.1"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "next.config.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Germoe/birthday-planner.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Germoe/birthday-planner/issues"
+  },
+  "homepage": "https://github.com/Germoe/birthday-planner#readme"
 }

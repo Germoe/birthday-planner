@@ -62,9 +62,11 @@ exports.addMessage = functions.region('europe-west1').pubsub.schedule('0 7 * * *
         // Create Default Data
         const data = {
             to: email,
-            message: {
-              subject: 'Hello from Firebase!',
-              html: 'This is an <code>HTML</code> email body.',
+            template: {
+              name: 'birthdays',
+              data: {
+                  birthdays
+              },
             },
           };
         
