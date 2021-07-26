@@ -7,7 +7,7 @@ admin.initializeApp();
 
 // Take the text parameter passed to this HTTP endpoint and insert it into 
 // Firestore under the path /messages/:documentId/original
-exports.addMessage = functions.https.onRequest(async (req, res) => {
+exports.addMessage = functions.region('europe-west1').pubsub.schedule('0 7 * * *').timeZone('Europe/Berlin').onRun(async (context) => {
     // Grab users
     const userids = (await admin.firestore().collection('users').get()).docs.map((doc) => doc.id);
 
@@ -104,6 +104,6 @@ exports.addMessage = functions.https.onRequest(async (req, res) => {
 
     const notificationPromises = userids.map((uid) => sendUserNotifications(uid))
     const notifications = await Promise.all(notificationPromises)
-    // Send back a message that we've successfully written the message
-    return res.json({result: notifications});
+    
+    return null;
   });
