@@ -21,7 +21,7 @@ exports.addMessage = functions.https.onRequest(async (req, res) => {
                     birthdate: birthday['birthdate'].toDate()
                 }
             })
-        })
+        }).catch((err) => console.log(err))
         return birthdays
     };
 
@@ -31,7 +31,7 @@ exports.addMessage = functions.https.onRequest(async (req, res) => {
                 ...doc.data(),
                 nid: doc.id
             };
-        })
+        }).catch((err) => console.log(err))
 
         return emailRef
     }
