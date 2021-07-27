@@ -189,5 +189,5 @@ function getCountDown(birthdate) {
         next_date = new Date(`${today.getFullYear() + 1}-${getMonth(birthdate)}-${getDate(birthdate)}`);
     }
     const timeinmilisec = next_date.getTime() - today.getTime();
-    return Math.floor(timeinmilisec / (1000 * 60 * 60 * 24));
+    return Math.ceil(timeinmilisec / (1000 * 60 * 60 * 24));
 }
