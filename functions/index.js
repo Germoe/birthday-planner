@@ -56,9 +56,14 @@ async function scheduleMessages() {
             ].join('-');
     };
 
-    function getDaysUntil(date) {
-        const today = new Date()
-        return Math.ceil((date - today)/ (1000 * 60 * 60 * 24))
+    function getCountDown(date) {
+        const today = new Date();
+        let next_date = new Date(`${today.getFullYear()}-${getMonth(date)}-${getDate(date)}`);
+        if (today > next_date) {
+            next_date = new Date(`${today.getFullYear() + 1}-${getMonth(date)}-${getDate(date)}`);
+        }
+        const timeinmilisec = next_date.getTime() - today.getTime();
+        return Math.ceil(timeinmilisec / (1000 * 60 * 60 * 24));
     }
 
     async function prepareBirthdayMessage(uid, emailNotification, birthdays) {
@@ -70,10 +75,12 @@ async function scheduleMessages() {
         const messageRef = admin.firestore().collection('mail').doc(`${uid}-${nid}-${today}`);
 
         const birthdaysOutput = birthdays.map((birthday) => {
+            const daysUntil = getCountDown(birthday['birthdate'])
             const birthdate = DatetoString(birthday['birthdate'])
             return {
                 ...birthday,
-                birthdate 
+                birthdate,
+                daysUntil
             }
         })
         // Create Default Data
@@ -92,7 +99,7 @@ async function scheduleMessages() {
     }
 
     function selectNotifications(emailNotification, birthday) {
-        const daysUntil = getDaysUntil(birthday['birthdate'])
+        const daysUntil = getCountDown(birthday['birthdate'])
         const daysBefore = emailNotification['daysBefore']
 
         if (daysUntil == daysBefore) {
