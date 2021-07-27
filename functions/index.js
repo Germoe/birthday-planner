@@ -56,6 +56,11 @@ async function scheduleMessages() {
             ].join('-');
     };
 
+    function getMonth(date) {
+        var month = date.getMonth() + 1;
+        return month < 10 ? '0' + month : '' + month; // ('' + month) for string result
+    };
+
     function getCountDown(date) {
         const today = new Date();
         let next_date = new Date(`${today.getFullYear()}-${getMonth(date)}-${getDate(date)}`);
