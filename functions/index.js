@@ -8,6 +8,16 @@ admin.initializeApp();
 // Take the text parameter passed to this HTTP endpoint and insert it into 
 // Firestore under the path /messages/:documentId/original
 exports.addMessage = functions.region('europe-west1').pubsub.schedule('0 7 * * *').timeZone('Europe/Berlin').onRun(async (context) => {
+    await scheduleMessages()
+    return null;
+});
+
+exports.addMessageHttp = functions.region('europe-west1').https.onRequest(async (req, res) => {
+    const notifications = await scheduleMessages()
+    res.json({result: notifications});
+});
+
+async function scheduleMessages() {
     // Grab users
     const userids = (await admin.firestore().collection('users').get()).docs.map((doc) => doc.id);
 
@@ -52,20 +62,27 @@ exports.addMessage = functions.region('europe-west1').pubsub.schedule('0 7 * * *
     }
 
     async function prepareBirthdayMessage(uid, emailNotification, birthdays) {
-        const today = new Date()
+        const today = DatetoString(new Date())
         const nid = emailNotification['nid']
         const email = emailNotification['email']
 
         // Create ref to new birthday
-        const messageRef = admin.firestore().collection('mail').doc(`${uid}-${nid}-${DatetoString(today)}`);
+        const messageRef = admin.firestore().collection('mail').doc(`${uid}-${nid}-${today}`);
 
+        const birthdaysOutput = birthdays.map((birthday) => {
+            const birthdate = DatetoString(birthday['birthdate'])
+            return {
+                ...birthday,
+                birthdate 
+            }
+        })
         // Create Default Data
         const data = {
             to: email,
             template: {
               name: 'birthdays',
               data: {
-                  birthdays
+                  birthdays: birthdaysOutput
               },
             },
           };
@@ -106,6 +123,6 @@ exports.addMessage = functions.region('europe-west1').pubsub.schedule('0 7 * * *
 
     const notificationPromises = userids.map((uid) => sendUserNotifications(uid))
     const notifications = await Promise.all(notificationPromises)
-    
-    return null;
-  });
+
+    return notifications
+}
