@@ -146,7 +146,7 @@ export default function Controls(props) {
         <Grid container spacing={1} direction="row" justifyContent="center" alignItems="flex-start"> 
                 {props.children}
         </Grid>
-        <Grid container spacing={1} direction="row" justifyContent="center" alignItems="center"> 
+        <Grid container spacing={2} direction="row" justifyContent="center" alignItems="center"> 
             <Grid item xs={3}>
                     <IconButton onClick={() => setSettings(true)} size="small" aria-label="settings">
                         {(!emailNotification & !loadNotifications) ? 
