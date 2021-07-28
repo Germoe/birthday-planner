@@ -1,4 +1,4 @@
-import { Avatar, Divider, List, ListItem, ListItemAvatar, ListItemIcon, ListItemText } from "@material-ui/core";
+import { Avatar, Card, CardContent, Divider, Grid, List, ListItem, ListItemAvatar, ListItemIcon, ListItemText, makeStyles, Typography } from "@material-ui/core";
 import FolderIcon from '@material-ui/icons/Folder';
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
@@ -21,6 +21,7 @@ export default function BirthdayList(props) {
     )
 }
 
+
 function Birthdays(props) {
     const birthdays = props.birthdays
 
@@ -31,10 +32,23 @@ function Birthdays(props) {
     }
 
     return (
-        <List dense={true}>
+        <>
+        {birthdays.length > 0 ? <List dense={true}>
             {birthdays.map(({ id, data }) => (<Birthday key={id} id={id} {...data} setEditId={props.setEditId} />))}
-        </List>
+        </List> : <NoBirthdays />}
+        </>
     )
+}
+
+function NoBirthdays() {
+    return (
+        <Grid container justifyContent="center">
+            <Grid item>
+                <Typography align="center" color="primary" display="block" variant="caption">
+                    No Birthdays. Add some birthdays.
+                </Typography>
+            </Grid>
+        </Grid>)
 }
 
 function sortByCountdown(a,b) {
