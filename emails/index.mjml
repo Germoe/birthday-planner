@@ -1,0 +1,138 @@
+<mjml>
+  <mj-head>
+    <mj-title>Upcoming Birthdays</mj-title>
+    <mj-preview>Your friend(s) have upcoming birthdays - {{#each birthdays}}{{firstname}} {{daysUntil}}{{/each}}</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"></mj-all>
+      <mj-text font-weight="400" font-size="16px" color="#000000" line-height="24px" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"></mj-text>
+    </mj-attributes>
+    <mj-style inline="inline">
+      .body-section {
+      -webkit-box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15);
+      box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15);
+      }
+    </mj-style>
+    <mj-style inline="inline">
+      .text-link {
+      color: #5e6ebf
+      }
+    </mj-style>
+    <mj-style inline="inline">
+      .footer-link {
+      color: #888888
+      }
+    </mj-style>
+
+  </mj-head>
+  <mj-body background-color="#FEFBFF" width="600px">
+    <mj-section full-width="full-width" background-color="#FEFBFF" padding-bottom="0">
+      <mj-column width="100%">
+        <!-- <mj-image src="https://res.cloudinary.com/dheck1ubc/image/upload/v1544153577/Email/Images/AnnouncementOffset/crofts-white.png" alt="" align="center" width="150px" /> -->
+        <mj-text color="#000" font-weight="bold" align="center" text-transform="uppercase" font-size="16px" letter-spacing="1px" padding-top="30px">
+          Upcoming Birthdays
+          <br />
+          <!-- <span style="color: #979797; font-weight: normal">-</span> -->
+        </mj-text>
+        <mj-text color="#17CBC4" align="center" font-size="13px" padding-top="0" font-weight="bold" text-transform="uppercase" letter-spacing="1px" line-height="20px">
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-wrapper padding-top="0" padding-bottom="0" css-class="body-section">
+      <!-- <mj-section background-color="#ffffff">
+        <mj-column width="100%">
+          <mj-image src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-birthday-instagram-captions-1584723902.jpg?resize=980:*" width="600px" alt="" padding="0" href="https://google.com" />
+        </mj-column>
+      </mj-section> -->
+      <mj-section background-color="#ffffff" padding-left="15px" padding-right="15px">
+        <mj-column width="100%">
+          <mj-text color="#212b35" font-weight="bold" font-size="20px">
+            Your Friends have upcoming Birthdays:
+          </mj-text>
+          <!-- <mj-text color="#637381" font-size="16px">
+            <ul>
+              <li style="padding-bottom: 20px"><strong>Lorem ipsum dolor:</strong> Sit amet consectetur adipisicing elit.</li>
+              <li style="padding-bottom: 20px"><strong>Quia a assumenda nulla:</strong> Repudiandae accusamus obcaecati voluptatibus accusantium perspiciatis.</li>
+              <li><strong>Tempora culpa porro labore:</strong> In quisquam optio quibusdam fugiat perspiciatis nobis.</li>
+            </ul>
+          </mj-text> -->
+          <!-- <mj-button background-color="#5e6ebf" align="center" color="#ffffff" font-size="17px" font-weight="bold" href="https://google.com" width="300px">
+            RSVP Today
+          </mj-button> -->
+        </mj-column>
+      </mj-section>
+
+      <mj-raw>{{#each birthdays}}</mj-raw>
+      <mj-section background-color="#ffffff" padding-left="15px" padding-right="15px">
+        <mj-column width="15%">
+          <mj-image src="https://st2.depositphotos.com/3616015/5194/v/450/depositphotos_51945273-stock-illustration-birthday-cake-flat-icon-with.jpg" width="60px" alt="" padding="5px" />
+          </mj-text>
+        </mj-column>
+        <mj-column width="85%">
+          <mj-text color="#637381" font-size="16px" padding-bottom="30px">
+              {{firstname}} {{lastname}}
+              <br />
+              {{daysUntil}} days | {{birthdate}}
+          </mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-raw>{{/each}}</mj-raw>
+      <mj-section background-color="#ffffff" padding-left="15px" padding-right="15px" padding-top="0">
+        <mj-column width="100%">
+          <mj-divider border-color="#DFE3E8" border-width="1px" />
+        </mj-column>
+      </mj-section>
+      <mj-section background-color="#ffffff" padding="0 15px 0 15px">
+        <mj-column width="100%">
+          <mj-text color="#212b35" font-weight="bold" font-size="20px" padding-bottom="0">
+            Buy Your Birthday Card Set
+          </mj-text>
+          <!-- <mj-text color="#637381" font-size="16px">
+            We're looking forward to meeting you.
+          </mj-text> -->
+        </mj-column>
+      </mj-section>
+      <mj-section background-color="#ffffff" padding-left="15px" padding-right="15px">
+        <mj-column width="100%">
+          <mj-image src="https://media.istockphoto.com/vectors/happy-birthday-card-vector-anniversary-greeting-postcard-with-and-vector-id942440098?k=6&m=942440098&s=612x612&w=0&h=s4Kaf2g-OtILPTyqGP2txNtLdXon24R2_vnC4cIlbuc=" alt="" href="https://www.amazon.com/Watercolor-Bulk-Birthday-Cards-Assortment/dp/B07FX29XNR"  />
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+    <mj-wrapper full-width="full-width">
+      <mj-section>
+        <mj-column width="100%" padding="0">
+          <mj-social font-size="15px" icon-size="30px" mode="horizontal" padding="0" align="center">
+            <mj-social-element name="facebook" href="https://mjml.io/" background-color="#A1A0A0">
+            </mj-social-element>
+            <mj-social-element name="google" href="https://mjml.io/" background-color="#A1A0A0">
+            </mj-social-element>
+            <mj-social-element name="twitter" href="https://mjml.io/" background-color="#A1A0A0">
+            </mj-social-element>
+            <mj-social-element name="linkedin" href="https://mjml.io/" background-color="#A1A0A0">
+            </mj-social-element>
+          </mj-social>
+          <mj-text color="#445566" font-size="11px" font-weight="bold" align="center">
+            View this email in your browser
+          </mj-text>
+          <mj-text color="#445566" font-size="11px" align="center" line-height="16px">
+            You are receiving this email advertisement because you registered with Croft's Accountants. (123 Main Street, Austin, TX 78701) and agreed to receive emails from us regarding new features, events and special offers.
+          </mj-text>
+          <mj-text color="#445566" font-size="11px" align="center" line-height="16px">
+            &copy; Croft's Accountants Inc., All Rights Reserved.
+          </mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section padding-top="0">
+        <mj-group>
+          <mj-column width="100%" padding-right="0">
+            <mj-text color="#445566" font-size="11px" align="center" line-height="16px" font-weight="bold">
+              <a class="footer-link" href="https://www.google.com">Privacy</a>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<a class="footer-link" href="https://www.google.com">Unsubscribe</a>
+            </mj-text>
+          </mj-column>
+        </mj-group>
+
+      </mj-section>
+    </mj-wrapper>
+
+  </mj-body>
+</mjml>
